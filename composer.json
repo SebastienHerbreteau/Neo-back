@@ -1,0 +1,20 @@
+{
+    "name": "acs/php-mvc-master",
+    "authors": [
+        {
+            "name": "Sébastien Herbreteau",
+            "email": "seb.eric.herbreteau@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": ""
+        }
+    },
+    "config": {
+        "platform-check": false
+    }
+}
