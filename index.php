@@ -5,8 +5,8 @@ namespace App;
 require "vendor/autoload.php";
 
 
-    use App\Controllers\CategoryController;
-    use App\Controllers\HomeController;
+
+
     use App\Controllers\PostController;
     use App\Controllers\AdminController;
     use App\Models\Database;
