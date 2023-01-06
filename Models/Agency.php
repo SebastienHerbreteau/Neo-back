@@ -16,7 +16,7 @@ class Agency
             ];
             Database::connect();
             $data = Database::prepReq(
-                'SELECT FROM agency WHERE user.id = :id',$params
+                'SELECT FROM agency WHERE agency.id = :id',$params
             );
             return $data->rowCount();
         }
