@@ -54,7 +54,7 @@ class Database
     {
         self::$request = self::connect()->prepare($query);
         self::$request->execute($array);
-        return self::$request;
+        return self::$request->rowCount();
     }
 
     /**

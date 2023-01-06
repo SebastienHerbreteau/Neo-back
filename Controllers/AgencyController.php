@@ -38,7 +38,7 @@ class AgencyController extends Controller
         $id_planet
     ) {
         $agency = new Agency();
-        $agency = $agency->postAgency(
+        $agency = $agency->add(
             $name,
             $email,
             $pwd,

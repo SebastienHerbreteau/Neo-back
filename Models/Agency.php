@@ -61,15 +61,15 @@ class Agency
      * Permet de créer une agence
      * @param int $id
      */
-    public static function postAgency(
-        $name,
-        $email,
-        $pwd,
-        $ceo_name,
-        $tel,
-        $website,
-        $logo,
-        $id_planet
+    public static function add(
+        string $name,
+        string $email,
+        string $pwd,
+        string $ceo_name,
+        int $tel,
+        string $website,
+        string $logo,
+        int $id_planet
     ) {
         $params = [
             'name' => $name,
@@ -82,7 +82,7 @@ class Agency
             'id_planet' => $id_planet,
         ];
 
-        Database::prepReq(
+        return Database::prepReq(
             'INSERT INTO agency (name, email, pwd, ceo_name, tel, website, logo, id_planet) VALUES (:name, :email, :pwd, :ceo_name, :tel, :website, :logo, :id_planet)',
             $params
         );
