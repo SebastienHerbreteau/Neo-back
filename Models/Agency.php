@@ -16,7 +16,7 @@ class Agency
             ];
             Database::connect();
             $data = Database::prepReq(
-                'SELECT FROM agency WHERE user.id = :id',
+                'SELECT FROM agency WHERE user.id = :id',$params
             );
             return $data->rowCount();
         }
@@ -32,7 +32,7 @@ class Agency
             ];
             Database::connect();
             $data = Database::prepReq(
-                'SELECT * FROM agency INNER JOIN planet ON agency.id_planet = planet.id WHERE planet.id = :planet_id',
+                'SELECT * FROM agency INNER JOIN planet ON agency.id_planet = planet.id WHERE planet.id = :planet_id',$params
             );
             return $data->rowCount();
         }
@@ -65,7 +65,7 @@ class Agency
             ];
             Database::connect();
             $data = Database::prepReq(
-                'DELETE FROM agency WHERE agency.id = :id',
+                'DELETE FROM agency WHERE agency.id = :id',$params
             );
             return $data->rowCount();
         }
@@ -89,7 +89,7 @@ class Agency
 
             Database::connect();
             $data = Database::prepReq(
-                'INSERT INTO agency (name, email, pwd, ceo_name, tel, website, logo, id_planet) VALUES (:name, :email, :password, :ceo_name, :tel, :website, :logo, :id_planet)'
+                'INSERT INTO agency (name, email, pwd, ceo_name, tel, website, logo, id_planet) VALUES (:name, :email, :password, :ceo_name, :tel, :website, :logo, :id_planet)',$params
             );
 
             return $data->rowCount();
@@ -129,7 +129,7 @@ class Agency
                 website = :website,
                 logo = :logo,
                 id_planet = :id_planet
-                WHERE id = :id ',
+                WHERE id = :id ',$params
             );
             return $data->rowCount();
         }
