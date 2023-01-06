@@ -8,14 +8,19 @@ class Candidate
 {
     public function getAllCandidates()
     {
-        Database::connect();
         Database::prepReq('SELECT * FROM candidate');
         return Database::fetchData();
     }
 
-    public function postCanditate($name, $email, $pwd, $id_planet, $tel, $avatar, $cv)
-    {
-
+    public function postCanditate(
+        $name,
+        $email,
+        $pwd,
+        $id_planet,
+        $tel,
+        $avatar,
+        $cv
+    ) {
         $params = [
             'id' => $name,
             'email' => $email,
@@ -26,16 +31,24 @@ class Candidate
             'cv' => $cv,
         ];
 
-        Database::connect();
-        Database::prepReq('INSERT INTO candidate (name, email, pwd, id_planet, tel, avatar, cv) VALUES (:name, :email, :pwd, :id_planet, 
+        Database::prepReq(
+            'INSERT INTO candidate (name, email, pwd, id_planet, tel, avatar, cv) VALUES (:name, :email, :pwd, :id_planet, 
          :tel, :avatar, :cv)',
-         $params
-         );
+            $params
+        );
         return Database::fetchData();
     }
 
-    public function putCandidate($candidate_id, $name, $email, $pwd, $id_planet, $tel, $avatar, $cv)
-    {
+    public function putCandidate(
+        $candidate_id,
+        $name,
+        $email,
+        $pwd,
+        $id_planet,
+        $tel,
+        $avatar,
+        $cv
+    ) {
         $params = [
             'id' => $candidate_id,
             'name' => $name,
@@ -45,9 +58,9 @@ class Candidate
             'tel' => $tel,
             'avatar' => $avatar,
             'cv' => $cv,
-        ]; 
-        Database::connect();
-        $data = Database::prepReq(
+        ];
+
+        Database::prepReq(
             "UPDATE candidate 
             SET name = :name, 
             email = :email, 
@@ -59,22 +72,17 @@ class Candidate
             WHERE candidate.id = :id ",
             $params
         );
-        return $data->rowCount();
     }
-
-
-    
 
     public function deleteCandidate(int $candidate_id): int
     {
         $params = [
             'id' => $candidate_id,
         ];
-        Database::connect();
-        $data = Database::prepReq(
+
+        Database::prepReq(
             'DELETE FROM candidate WHERE candidate.id = :id',
             $params
         );
-        return $data->rowCount();
     }
 }

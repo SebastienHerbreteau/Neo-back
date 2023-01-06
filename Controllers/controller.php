@@ -1,7 +1,7 @@
 <?php
-namespace App\Lib;
+namespace App\Controllers;
 
-class Response
+class Controller
 {
     private $status = 200;
 
