@@ -17,7 +17,22 @@ class Agency
             Database::connect();
             $data = Database::prepReq(
                 'SELECT FROM agency WHERE user.id = :id',
-                $params
+            );
+            return $data->rowCount();
+        }
+
+       /**
+         * Permet de récupérer UNE agence via son l'ID de sa planète
+         * @param int $planet_id correspond a l'id de la planête sur laquelle se trouve l'agence recherchée
+         */
+        public static function getAgencyByPlanetId(int $planet_id)
+        {
+            $params = [
+                'planet_id' => $planet_id,
+            ];
+            Database::connect();
+            $data = Database::prepReq(
+                'SELECT * FROM agency INNER JOIN planet ON agency.id_planet = planet.id WHERE planet.id = :planet_id',
             );
             return $data->rowCount();
         }
@@ -51,7 +66,6 @@ class Agency
             Database::connect();
             $data = Database::prepReq(
                 'DELETE FROM agency WHERE agency.id = :id',
-                $params
             );
             return $data->rowCount();
         }
