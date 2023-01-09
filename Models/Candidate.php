@@ -109,4 +109,16 @@ class Candidate
             $params
         );
     }
+
+    public function getCandidateByOfferId ($id)
+    {
+        $params = [
+            'id' => $id,
+        ];
+
+        Database::prepReq(
+            'SELECT * FROM candidate INNER JOIN job_offer ON candidate.id = candidate.id WHERE job_offer.id = :job_offer_id',
+            $params
+        );
+    }
 }
