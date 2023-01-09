@@ -271,9 +271,9 @@ if (
 }
 
 if (isset($_GET['offer']) && str_contains($_SERVER['REQUEST_URI'], '/job')) {
-    $id = $_GET['offer'];
+    $id_offer = $_GET['offer'];
     $jobController = new jobController();
-    $data = $jobController->getJobByCandidate($id);
+    $data = $jobController->getJobByCandidate($id_offer);
     echo $jobController->ToJSON($data);
     return;
 }
