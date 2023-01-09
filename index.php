@@ -237,7 +237,6 @@ if ($_SERVER['REQUEST_URI'] == '/job') {
     echo $jobController->ToJSON($data);
 }
 
-// return an job by it's id
 if (isset($_GET['id']) && str_contains($_SERVER['REQUEST_URI'], '/job')) {
     $id = $_GET['id'];
     $jobController = new jobController();
@@ -245,7 +244,6 @@ if (isset($_GET['id']) && str_contains($_SERVER['REQUEST_URI'], '/job')) {
     echo $jobController->ToJSON($data);
 }
 
-// Return agencies by their home planet ID
 if (isset($_GET['offer']) && str_contains($_SERVER['REQUEST_URI'], '/job')) {
     $id = $_GET['offer'];
     $jobController = new jobController();
