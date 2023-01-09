@@ -4,10 +4,9 @@ namespace App;
 
 require 'vendor/autoload.php';
 
+use App\Controllers\JobController;
 use App\Controllers\CandidateController;
-use App\Controllers\Controller;
 use App\Controllers\AgencyController;
-use App\Controllers\CandidateController;
 use App\Controllers\PlanetController;
 use App\Models\Database;
 use Dotenv\Dotenv;
@@ -149,7 +148,7 @@ if (
 ) {
     $id = $_GET['offer'];
     $CandidateController = new CandidateController();
-    $data = $CandidateController->getCandidateByJobOffer($id);
+    $data = $CandidateController->getCandidateByOfferId($id);
     echo $CandidateController->ToJSON($data);
     return;
 }
@@ -246,18 +245,41 @@ if (isset($_GET['id']) && str_contains($_SERVER['REQUEST_URI'], '/job')) {
     echo $jobController->ToJSON($data);
 }
 
+
+if (isset($_GET['planet']) && str_contains($_SERVER['REQUEST_URI'], '/job')) {
+    $id = $_GET['planet'];
+    $jobController = new jobController();
+    $data = $jobController->getJobByPlanet($id_planet);
+    echo $jobController->ToJSON($data);
+}
+
+if (isset($_GET['contract']) && str_contains($_SERVER['REQUEST_URI'], '/job')) {
+    $id = $_GET['contract'];
+    $jobController = new jobController();
+    $data = $jobController->getJobByContract($contract);
+    echo $jobController->ToJSON($data);
+}
+
+if (isset($_GET['salary']) && str_contains($_SERVER['REQUEST_URI'], '/job')) {
+    $id = $_GET['salary'];
+    $jobController = new jobController();
+    $data = $jobController->getJobBySalary($contract);
+    echo $jobController->ToJSON($data);
+}
+
+
 if (isset($_GET['offer']) && str_contains($_SERVER['REQUEST_URI'], '/job')) {
     $id = $_GET['offer'];
     $jobController = new jobController();
-    $data = $jobController->getjobByCandidate($id);
+    $data = $jobController->getJobByCandidate($id_candidate);
     echo $jobController->ToJSON($data);
     return;
 }
 
 if (
     $_SERVER['REQUEST_METHOD'] == 'POST' &&
-        str_contains($_SERVER['REQUEST_URI'], '/add-job') &&
-        !empty($_POST['title']) and
+    str_contains($_SERVER['REQUEST_URI'], '/add-job') &&
+    !empty($_POST['title']) and
     !empty($_POST['content']) and
     !empty($_POST['id_planet']) and
     !empty($_POST['contract_type']) and
