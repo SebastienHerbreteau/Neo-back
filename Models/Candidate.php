@@ -117,8 +117,9 @@ class Candidate
         ];
 
         Database::prepReq(
-            'SELECT * FROM candidate INNER JOIN job_offer ON candidate.id = candidate.id WHERE job_offer.id = :job_offer_id',
+            'SELECT * FROM candidate JOIN candidate_job_offer ON candidate_job_offer.id_candidate = candidate.id JOIN job_offer ON candidate_job_offer.id_job_offer = job_offer.id WHERE job_offer.id = :id',
             $params
         );
     }
+    
 }
