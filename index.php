@@ -290,7 +290,6 @@ if (
 ) {
     $title = $_POST['title'];
     $content = $_POST['content'];
-    $pwd = $_POST['pwd'];
     $id_planet = $_POST['id_planet'];
     $contract_type = $_POST['contract_type'];
     $salary = $_POST['salary'];
@@ -300,7 +299,6 @@ if (
     $data = $jobController->createJobOffer(
         $title,
         $content,
-        $pwd,
         $id_planet,
         $contract_type,
         $salary,
@@ -322,7 +320,6 @@ if (
     $id = $_POST['id'];
     $title = $_POST['title'];
     $content = $_POST['content'];
-    $pwd = $_POST['pwd'];
     $id_planet = $_POST['id_planet'];
     $contract_type = $_POST['contract_type'];
     $salary = $_POST['salary'];
@@ -333,7 +330,6 @@ if (
         $id,
         $title,
         $content,
-        $pwd,
         $id_planet,
         $contract_type,
         $salary,
