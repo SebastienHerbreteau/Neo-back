@@ -229,11 +229,11 @@ if (
 if (isset($_GET['id']) && str_contains($_SERVER['REQUEST_URI'], '/planet')) {
     $planetController = new PlanetController();
     $data = $planetController->getPlanet($id);
-    echo $CandidateController->ToJSON($data);
+    echo $planetController->ToJSON($data);
 }
 
 if ($_SERVER['REQUEST_URI'] == '/planet') {
     $planetController = new PlanetController();
     $data = $planetController->getAllPlanets();
-    echo $CandidateController->ToJSON($data);
+    echo $planetController->ToJSON($data);
 }
