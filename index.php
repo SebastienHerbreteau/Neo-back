@@ -155,8 +155,8 @@ if (
 
 if (
     $_SERVER['REQUEST_METHOD'] == 'POST' &&
-        str_contains($_SERVER['REQUEST_URI'], '/add-candidate') &&
-        !empty($_POST['name']) and
+    str_contains($_SERVER['REQUEST_URI'], '/add-candidate') &&
+    !empty($_POST['name']) and
     !empty($_POST['email']) and
     !empty($_POST['pwd']) and
     !empty($_POST['id_planet']) and
@@ -229,6 +229,7 @@ if (
     echo $CandidateController->ToJSON($data);
 }
 
+
 //--------------------------------------------------------- ROUTEUR JOB OFFER------------------------------------------------
 
 if ($_SERVER['REQUEST_URI'] == '/job') {
@@ -243,6 +244,7 @@ if (isset($_GET['id']) && str_contains($_SERVER['REQUEST_URI'], '/job')) {
     $data = $jobController->getJobOffer($id);
     echo $jobController->ToJSON($data);
 }
+
 
 if (isset($_GET['planet']) && str_contains($_SERVER['REQUEST_URI'], '/job')) {
     $id = $_GET['planet'];
@@ -264,6 +266,7 @@ if (isset($_GET['salary']) && str_contains($_SERVER['REQUEST_URI'], '/job')) {
     $data = $jobController->getJobBySalary($contract);
     echo $jobController->ToJSON($data);
 }
+
 
 if (isset($_GET['offer']) && str_contains($_SERVER['REQUEST_URI'], '/job')) {
     $id = $_GET['offer'];
@@ -359,3 +362,4 @@ if ($_SERVER['REQUEST_URI'] == '/planet') {
     $data = $planetController->getAllPlanets();
     echo $planetController->ToJSON($data);
 }
+

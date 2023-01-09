@@ -46,7 +46,7 @@ class Candidate
         $cv
     ) {
         $params = [
-            'id' => $name,
+            'name' => $name,
             'email' => $email,
             'pwd' => $pwd,
             'id_planet' => $id_planet,
@@ -106,6 +106,18 @@ class Candidate
 
         Database::prepReq(
             'DELETE FROM candidate WHERE id = :id',
+            $params
+        );
+    }
+
+    public function getCandidateByOfferId ($id)
+    {
+        $params = [
+            'id' => $id,
+        ];
+
+        Database::prepReq(
+            'SELECT * FROM candidate INNER JOIN job_offer ON candidate.id = candidate.id WHERE job_offer.id = :job_offer_id',
             $params
         );
     }
