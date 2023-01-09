@@ -7,6 +7,7 @@ require 'vendor/autoload.php';
 use App\Controllers\Controller;
 use App\Controllers\AgencyController;
 use App\Controllers\CandidateController;
+use App\Controllers\PlanetController;
 use App\Models\Database;
 use Dotenv\Dotenv;
 
@@ -221,5 +222,18 @@ if (
     $id = $_GET['id'];
     $CandidateController = new CandidateController();
     $data = $CandidateController->deleteCandidate($id);
+    echo $CandidateController->ToJSON($data);
+}
+//--------------------------------------------------------- ROUTEUR PLANET ------------------------------------------------
+// Return a planet by his ID
+if (isset($_GET['id']) && str_contains($_SERVER['REQUEST_URI'], '/planet')) {
+    $planetController = new PlanetController();
+    $data = $planetController->getPlanet($id);
+    echo $CandidateController->ToJSON($data);
+}
+
+if ($_SERVER['REQUEST_URI'] == '/planet') {
+    $planetController = new PlanetController();
+    $data = $planetController->getAllPlanets();
     echo $CandidateController->ToJSON($data);
 }
