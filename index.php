@@ -18,7 +18,10 @@ Database::$pass = $_ENV['DBPASSWORD'];
 Database::$dbName = $_ENV['DBNAME'];
 Database::connect();
 
-// ROUTER
+// ROUTER #######################################################################"
+
+// AGENCY ==========================================================
+
 // return all of the agencies
 if ($_SERVER['REQUEST_URI'] == '/agency')
 {
@@ -47,7 +50,7 @@ if (isset($_GET['planet']))
     return;
 }
 
-
+//Add an agency
 if (
 $_SERVER['REQUEST_METHOD'] == 'POST' &&
 str_contains($_SERVER['REQUEST_URI'], "/add-agency") &&
@@ -82,7 +85,7 @@ str_contains($_SERVER['REQUEST_URI'], "/add-agency") &&
         $id_planet
     );
 }
-
+//Modify an agency by ID
 if (
 $_SERVER['REQUEST_METHOD'] == 'POST' &&
 str_contains($_SERVER['REQUEST_URI'], "/modify-agency") &&
@@ -119,9 +122,12 @@ str_contains($_SERVER['REQUEST_URI'], "/modify-agency") &&
         $logo,
         $id_planet
     );
-
-
 }
+
+
+// Delete an agency by ID
+
+
 if (isset($_GET['id']) && str_contains($_SERVER['REQUEST_URI'], "/delete-agency"))
 {
     $id = $_GET['id'];
@@ -129,6 +135,7 @@ if (isset($_GET['id']) && str_contains($_SERVER['REQUEST_URI'], "/delete-agency"
     $data = $AgencyController->deleteAgency($id);
     echo $AgencyController->ToJSON($data);
 }
+
 
 
 
