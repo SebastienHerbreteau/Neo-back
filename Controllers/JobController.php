@@ -116,13 +116,7 @@ class JobController extends Controller
         return $job;
     }
 
-        // job by candidate - test
-    public function getJobByCandidate($id)
-    {
-        $job = new Job();
-        $job = $job->getJobByCandidate($id);
-        return $job;
-    }
+
 }
 
 
