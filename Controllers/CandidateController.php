@@ -79,4 +79,11 @@ class CandidateController extends Controller
     $candidate = $candidate->delete($id);
     return $candidate;
   }
+
+  public function getCandidateByOfferId($id)
+  {
+      $candidate = new Candidate();
+      $candidate = $candidate->getCandidateByOfferId($id);
+      return $candidate;
+  }
 }
