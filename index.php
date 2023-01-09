@@ -119,7 +119,6 @@ if (
     isset($_GET['id']) &&
     str_contains($_SERVER['REQUEST_URI'], '/delete-agency')
 ) {
-    var_dump($id);
     $id = $_GET['id'];
     $AgencyController = new AgencyController();
     $data = $AgencyController->deleteAgency($id);
