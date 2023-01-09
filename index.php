@@ -6,6 +6,7 @@ require 'vendor/autoload.php';
 
 use App\Controllers\Controller;
 use App\Controllers\AgencyController;
+use App\Controllers\CandidateController;
 use App\Models\Database;
 use Dotenv\Dotenv;
 
@@ -134,7 +135,6 @@ if ($_SERVER['REQUEST_URI'] == '/candidate') {
 
 // return an Candidate by it's id
 if (isset($_GET['id']) && str_contains($_SERVER['REQUEST_URI'], '/candidate')) {
-    $id = $_GET['id'];
     $CandidateController = new CandidateController();
     $data = $CandidateController->getCandidate($id);
     echo $CandidateController->ToJSON($data);
@@ -151,8 +151,8 @@ if (isset($_GET['planet'])) {
 
 if (
     $_SERVER['REQUEST_METHOD'] == 'POST' &&
-        str_contains($_SERVER['REQUEST_URI'], '/add-candidate') &&
-        !empty($_POST['name']) and
+    str_contains($_SERVER['REQUEST_URI'], '/add-candidate') &&
+    !empty($_POST['name']) and
     !empty($_POST['email']) and
     !empty($_POST['pwd']) and
     !empty($_POST['tel']) and
@@ -173,10 +173,10 @@ if (
         $name,
         $email,
         $pwd,
+        $id_planet,
         $tel,
         $avatar,
-        $cv,
-        $id_planet
+        $cv
     );
 }
 
@@ -207,10 +207,10 @@ if (
         $name,
         $email,
         $pwd,
+        $id_planet,
         $tel,
         $avatar,
-        $cv,
-        $id_planet
+        $cv
     );
 }
 if (

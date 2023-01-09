@@ -46,7 +46,7 @@ class Candidate
         $cv
     ) {
         $params = [
-            'id' => $name,
+            'name' => $name,
             'email' => $email,
             'pwd' => $pwd,
             'id_planet' => $id_planet,
