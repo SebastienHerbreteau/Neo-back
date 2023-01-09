@@ -47,13 +47,13 @@ class Job
     }
 
 
-    public function getJobOffer(int $id): int
+    public function getJobOffer(int $id)
     {
         $params = [
             'id' => $id,
         ];
         Database::prepReq(
-            'SELECT FROM job_offer WHERE id = :id',
+            'SELECT * FROM job_offer WHERE id = :id',
             $params
         );
         return Database::fetchData();
