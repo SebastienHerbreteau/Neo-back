@@ -12,7 +12,31 @@ class Candidate
         return Database::fetchData();
     }
 
-    public function postCanditate(
+    public function get($id)
+    {
+        $params = [
+            'id' => $id,
+            
+        ];
+        Database::prepReq('SELECT * FROM candidate WHERE id = :id', $params);
+        
+        return Database::fetchData();
+    }
+
+    public static function getCandidateByPlanetId(int $planet_id)
+    {
+        $params = [
+            'planet_id' => $planet_id,
+        ];
+
+        Database::prepReq(
+            'SELECT * FROM candidate INNER JOIN planet ON candidate.id_planet = planet.id WHERE planet.id = :planet_id',
+            $params
+        );
+        return Database::fetchData();
+    }
+
+    public function add(
         $name,
         $email,
         $pwd,
@@ -39,7 +63,7 @@ class Candidate
         return Database::fetchData();
     }
 
-    public function putCandidate(
+    public function put(
         $candidate_id,
         $name,
         $email,
@@ -69,19 +93,19 @@ class Candidate
             tel = :tel, 
             avatar = :avatar, 
             cv = :cv 
-            WHERE candidate.id = :id ",
+            WHERE id = :id ",
             $params
         );
     }
 
-    public function deleteCandidate(int $candidate_id): int
+    public function delete(int $candidate_id): void
     {
         $params = [
             'id' => $candidate_id,
         ];
 
         Database::prepReq(
-            'DELETE FROM candidate WHERE candidate.id = :id',
+            'DELETE FROM candidate WHERE id = :id',
             $params
         );
     }
