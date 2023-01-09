@@ -35,11 +35,11 @@ add a new agency by providing informations via POST method
 *information required:*
 
 > email string
-pwd string
-ceo_name string
-tel int
-website string
-logo string
+pwd string,
+ceo_name string,
+tel int,
+website string,
+logo string,
 id_planet int
 > 
 
@@ -50,12 +50,12 @@ modify an agency by providing it’s id and informations via POST method
 *informations required:*
 
 > id int
-email string
-pwd string
-ceo_name string
-tel int
-website string
-logo string
+email string,
+pwd string,
+ceo_name string,
+tel int,
+website string,
+logo string,
 id_planet int
 > 
 
@@ -101,11 +101,11 @@ create a candidate by providing information via POST method
 information required:
 
 > name string
-email string
-pwd string
-id_planet int
-tel int
-avatar string
+email string,
+pwd string,
+id_planet int,
+tel int,
+avatar string,
 cv string
 > 
 
@@ -116,12 +116,12 @@ modify a candidate by by providing it’s id and informations via POST method
 information required:
 
 > id int
-name string
-email string
-pwd string
-tel int
-avatar string
-cv string
+name string,
+email string,
+pwd string,
+tel int,
+avatar string,
+cv string,
 id_planet int
 > 
 
