@@ -1,29 +1,180 @@
-# PHP MVC
+# NEO_BACK DOCUMENTATION
 
-> Installer les données dans le fichier SQL fourni pour faire fonctionner le projet.
 
-Voici un starter pour comprendre simplement l'architecture MVC.
 
-Il se veut plus simple qu'un MVC traditionnel volontairement pour saisir le fonctionnement de base.
+## Routes
 
-Des points importants : 
-- l'index joue le rôle du controller (mais dans la réalité, le controller aura sa propre classe et l'index jouera le rôle du router qui définira sur quelle page on se trouve et que doit-il doit afficher)
-- tout ce qui touche à la base de données se trouve dans la partie `Models` 
-- tout ce qui touche à la partie rendu à l'utilisateur se trouve dans le dossier `Views`
+---
 
-Evidemment, les noms des dossiers changeront suivants les projets, les frameworks et la structure que l'on voudra adopter.
+### AGENCY ROUTES
 
-Résumé visuel : 
+return all the agencies
 
-![https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Mod%C3%A8le-vue-contr%C3%B4leur_%28MVC%29_-_fr.png/370px-Mod%C3%A8le-vue-contr%C3%B4leur_%28MVC%29_-_fr.png](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Mod%C3%A8le-vue-contr%C3%B4leur_%28MVC%29_-_fr.png/370px-Mod%C3%A8le-vue-contr%C3%B4leur_%28MVC%29_-_fr.png)
+`{url}/agency`
 
-Ressources : 
-- https://fr.wikipedia.org/wiki/Mod%C3%A8le-vue-contr%C3%B4leur
-- https://openclassrooms.com/fr/courses/4670706-adoptez-une-architecture-mvc-en-php
-- https://grafikart.fr/tutoriels/namespaces-563#autoplay
-- https://grafikart.fr/tutoriels/tp-structure-565#autoplay
-- https://grafikart.fr/tutoriels/tp-database-566#autoplay
-- https://grafikart.fr/tutoriels/tp-tables-567#autoplay
-- https://grafikart.fr/tutoriels/tp-pb-organisation-568#autoplay
-- https://grafikart.fr/tutoriels/mvc-model-view-controller-574#autoplay
-- https://grafikart.fr/tutoriels/mvc-model-vue-controller-php-132 (une vieille vidéo)
+return an agency by it’s id via GET method
+
+`{url}/agency?id=1`
+
+*information required:*
+
+> id int
+> 
+
+return an agency by it’s planet id via GET method
+
+`{url}/agency?planet=1`
+
+*information required:*
+
+> planet int
+> 
+
+add a new agency by providing informations via POST method
+
+`{url}/add-agency`
+
+*information required:*
+
+> email string
+pwd string
+ceo_name string
+tel int
+website string
+logo string
+id_planet int
+> 
+
+modify an agency by providing it’s id and informations via POST method
+
+`{url}/modify-agency`
+
+*informations required:*
+
+> id int
+email string
+pwd string
+ceo_name string
+tel int
+website string
+logo string
+id_planet int
+> 
+
+delete an agency by providing it’s id via GET method
+
+`{url}/delete-agency`
+
+*information required:*
+
+> id int
+> 
+
+---
+
+### CANDIDATE ROUTES
+
+return all the candidates
+
+`{url}/candidate`
+
+return a candidate by it’s id via GET method
+
+`{url}/candidate`
+
+information required:
+
+> id int
+> 
+
+return candidates by job_offers via GET method
+
+`{url}/candidate`
+
+information required:
+
+> offer int
+> 
+
+create a candidate by providing information via POST method
+
+`{url}/add-candidate`
+
+information required:
+
+> name string
+email string
+pwd string
+id_planet int
+tel int
+avatar string
+cv string
+> 
+
+modify a candidate by by providing it’s id and informations via POST method
+
+`{url}/modify-candidate`
+
+information required:
+
+> id int
+name string
+email string
+pwd string
+tel int
+avatar string
+cv string
+id_planet int
+> 
+
+delete a candidate by it’s id via GET method
+
+`{url}/delete-candidate`
+
+information required:
+
+> id int
+> 
+
+---
+
+### JOB ROUTES
+
+return all jobs
+
+`{url}/job`
+
+return a job offer by it’s id
+
+`{url}/job`
+
+information required:
+
+> id int
+> 
+
+return a job offer by it’s candidate
+
+`{url}/job`
+
+information required:
+
+> id int
+> 
+
+---
+
+### PLANET ROUTES
+
+return all planets
+
+`{url}/planet`
+
+return a planet by providing it’s id via GET method
+
+`{url}/job`
+
+information required:
+
+> id int
+>
