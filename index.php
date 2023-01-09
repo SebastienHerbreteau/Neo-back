@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_URI'] == '/agency') {
 }
 
 // return an agency by it's id
-if (isset($_GET['id']) && str_contains($_SERVER['REQUEST_URI'], '/agency')) {
+if (isset($_GET['id']) && str_contains($_SERVER['REQUEST_URI'], '/agency?')) {
     $id = $_GET['id'];
     $AgencyController = new AgencyController();
     $data = $AgencyController->getAgency($id);
@@ -37,7 +37,7 @@ if (isset($_GET['id']) && str_contains($_SERVER['REQUEST_URI'], '/agency')) {
 }
 
 // Return agencies by their home planet ID
-if (isset($_GET['planet'])) {
+if (isset($_GET['planet']) && str_contains($_SERVER['REQUEST_URI'], '/agency?')) {
     $id = $_GET['planet'];
     $AgencyController = new AgencyController();
     $data = $AgencyController->getAgencyByPlanetId($id);
@@ -134,7 +134,7 @@ if ($_SERVER['REQUEST_URI'] == '/candidate') {
 }
 
 // return an Candidate by it's id
-if (isset($_GET['id']) && str_contains($_SERVER['REQUEST_URI'], '/candidate')) {
+if (isset($_GET['id']) && str_contains($_SERVER['REQUEST_URI'], '/candidate?')) {
     $id = $_GET['id'];
     $CandidateController = new CandidateController();
     $data = $CandidateController->getCandidate($id);
@@ -144,7 +144,7 @@ if (isset($_GET['id']) && str_contains($_SERVER['REQUEST_URI'], '/candidate')) {
 // Return candidate by offer ID
 if (
     isset($_GET['offer']) &&
-    str_contains($_SERVER['REQUEST_URI'], '/candidate')
+    str_contains($_SERVER['REQUEST_URI'], '/candidate?')
 ) {
     $id = $_GET['offer'];
     $CandidateController = new CandidateController();
@@ -237,21 +237,21 @@ if ($_SERVER['REQUEST_URI'] == '/job') {
     echo $jobController->ToJSON($data);
 }
 
-if (isset($_GET['id']) && str_contains($_SERVER['REQUEST_URI'], '/job')) {
+if (isset($_GET['id']) && str_contains($_SERVER['REQUEST_URI'], '/job?')) {
     $id = $_GET['id'];
     $jobController = new jobController();
     $data = $jobController->getJobOffer($id);
     echo $jobController->ToJSON($data);
 }
 
-if (isset($_GET['planet']) && str_contains($_SERVER['REQUEST_URI'], '/job')) {
+if (isset($_GET['planet']) && str_contains($_SERVER['REQUEST_URI'], '/job?')) {
     $id_planet = $_GET['planet'];
     $jobController = new jobController();
     $data = $jobController->getJobByPlanet($id_planet);
     echo $jobController->ToJSON($data);
 }
 
-if (isset($_GET['contract']) && str_contains($_SERVER['REQUEST_URI'], '/job')) {
+if (isset($_GET['contract']) && str_contains($_SERVER['REQUEST_URI'], '/job?')) {
     $contract = $_GET['contract'];
     $jobController = new jobController();
     $data = $jobController->getJobByContract($contract);

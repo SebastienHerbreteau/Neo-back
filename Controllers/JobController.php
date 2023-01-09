@@ -26,7 +26,7 @@ class JobController extends Controller
 
     {
         $job = new Job();
-        $job = $job->getJobByPlanet();
+        $job = $job->getJobByPlanet($id_planet);
         return $job;
     }
 
@@ -34,7 +34,7 @@ class JobController extends Controller
 
     ) {
         $job = new Job();
-        $job = $job->getJobByContract();
+        $job = $job->getJobByContract($contract);
         return $job;
     }
 
