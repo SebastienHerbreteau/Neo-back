@@ -7,7 +7,6 @@ require 'vendor/autoload.php';
 use App\Controllers\CandidateController;
 use App\Controllers\Controller;
 use App\Controllers\AgencyController;
-use App\Controllers\CandidateController;
 use App\Controllers\PlanetController;
 use App\Models\Database;
 use Dotenv\Dotenv;

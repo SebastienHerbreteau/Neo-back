@@ -98,5 +98,19 @@ class Job
         
     }
 
+    // job by candidate - test
+
+    public function getJobByCandidate($id)
+    {
+        $params = [
+            'id' => $id,
+        ];
+
+        Database::prepReq(
+            'SELECT * FROM job_offer JOIN candidate_job_offer ON candidate_job_offer.id_job_offer = job_offer.id JOIN candidate ON candidate_job_offer.id_candidate = candidate.id WHERE candidate.id = :id',
+            $params
+        );
+    }
+
     
 }
