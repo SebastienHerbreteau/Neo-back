@@ -120,6 +120,8 @@ str_contains($_SERVER['REQUEST_URI'], "/modify-agency") &&
         $id_planet
     );
 
+
+}
 if (isset($_GET['id']) && str_contains($_SERVER['REQUEST_URI'], "/delete-agency"))
 {
     $id = $_GET['id'];
@@ -127,6 +129,6 @@ if (isset($_GET['id']) && str_contains($_SERVER['REQUEST_URI'], "/delete-agency"
     $data = $AgencyController->deleteAgency($id);
     echo $AgencyController->ToJSON($data);
 }
-}
+
 
 
