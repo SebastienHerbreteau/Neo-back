@@ -245,14 +245,14 @@ if (isset($_GET['id']) && str_contains($_SERVER['REQUEST_URI'], '/job')) {
 }
 
 if (isset($_GET['planet']) && str_contains($_SERVER['REQUEST_URI'], '/job')) {
-    $id = $_GET['planet'];
+    $id_planet = $_GET['planet'];
     $jobController = new jobController();
     $data = $jobController->getJobByPlanet($id_planet);
     echo $jobController->ToJSON($data);
 }
 
 if (isset($_GET['contract']) && str_contains($_SERVER['REQUEST_URI'], '/job')) {
-    $id = $_GET['contract'];
+    $contract = $_GET['contract'];
     $jobController = new jobController();
     $data = $jobController->getJobByContract($contract);
     echo $jobController->ToJSON($data);
@@ -273,7 +273,7 @@ if (
 if (isset($_GET['offer']) && str_contains($_SERVER['REQUEST_URI'], '/job')) {
     $id = $_GET['offer'];
     $jobController = new jobController();
-    $data = $jobController->getJobByCandidate($id_candidate);
+    $data = $jobController->getJobByCandidate($id);
     echo $jobController->ToJSON($data);
     return;
 }
