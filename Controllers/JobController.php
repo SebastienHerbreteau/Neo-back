@@ -6,7 +6,6 @@ use App\Controllers\Controller;
 
 class JobController extends Controller
 {
-
     public function getJobOffer($id)
     {
         $job = new Job();
@@ -14,46 +13,40 @@ class JobController extends Controller
         return $job;
     }
 
-    public function getAllJobs(
-
-    ) {
+    public function getAllJobs()
+    {
         $job = new Job();
         $job = $job->getAllJobOffer();
         return $job;
     }
 
     public function getJobByPlanet($id_planet)
-
     {
         $job = new Job();
         $job = $job->getJobByPlanet($id_planet);
         return $job;
     }
 
-    public function getJobByContract($contract
-
-    ) {
+    public function getJobByContract($contract)
+    {
         $job = new Job();
         $job = $job->getJobByContract($contract);
         return $job;
     }
 
-    public function getJobBySalary($salary
-
-    ) {
+    public function getJobBySalary($salary_min, $salary_max)
+    {
         $job = new Job();
-        $job = $job->getJobBySalary();
+        $job = $job->getJobBySalary($salary_min, $salary_max);
         return $job;
     }
 
-    public function getJobByCandidate($id_candidate
-
-    ) {
+    public function getJobByCandidate($id_candidate)
+    {
         $job = new Job();
-        $job = $job->getJobByCAndidate();
+        $job = $job->getJobByCAndidate($id_candidate);
         return $job;
     }
-
 
     /**
      * @param int $id
@@ -66,7 +59,6 @@ class JobController extends Controller
      * @return int
      */
     public function createJobOffer(
-        int $id,
         string $title,
         string $content,
         int $id_planet,
@@ -76,7 +68,6 @@ class JobController extends Controller
     ) {
         $job = new Job();
         $job = $job->postJobOffer(
-            $id,
             $title,
             $content,
             $id_planet,
@@ -115,9 +106,4 @@ class JobController extends Controller
         $job = $job->deleteJobOffer($id);
         return $job;
     }
-
-
 }
-
-
-
