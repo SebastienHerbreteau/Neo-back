@@ -156,8 +156,8 @@ if (
 // Add a new candidate
 if (
     $_SERVER['REQUEST_METHOD'] == 'POST' &&
-    str_contains($_SERVER['REQUEST_URI'], '/add-candidate') &&
-    !empty($_POST['name']) and
+        str_contains($_SERVER['REQUEST_URI'], '/add-candidate') &&
+        !empty($_POST['name']) and
     !empty($_POST['email']) and
     !empty($_POST['pwd']) and
     !empty($_POST['id_planet']) and
@@ -229,7 +229,6 @@ if (
     echo $CandidateController->ToJSON($data);
 }
 
-
 //--------------------------------------------------------- ROUTEUR JOB OFFER------------------------------------------------
 
 if ($_SERVER['REQUEST_URI'] == '/job') {
@@ -245,7 +244,6 @@ if (isset($_GET['id']) && str_contains($_SERVER['REQUEST_URI'], '/job')) {
     echo $jobController->ToJSON($data);
 }
 
-
 if (isset($_GET['planet']) && str_contains($_SERVER['REQUEST_URI'], '/job')) {
     $id = $_GET['planet'];
     $jobController = new jobController();
@@ -260,13 +258,17 @@ if (isset($_GET['contract']) && str_contains($_SERVER['REQUEST_URI'], '/job')) {
     echo $jobController->ToJSON($data);
 }
 
-if (isset($_GET['salary']) && str_contains($_SERVER['REQUEST_URI'], '/job')) {
-    $id = $_GET['salary'];
+if (
+    isset($_GET['salary_min']) &&
+    isset($_GET['salary_max']) &&
+    str_contains($_SERVER['REQUEST_URI'], '/job')
+) {
+    $salary_max = $_GET['salary_max'];
+    $salary_min = $_GET['salary_min'];
     $jobController = new jobController();
-    $data = $jobController->getJobBySalary($contract);
+    $data = $jobController->getJobBySalary($salary_min, $salary_max);
     echo $jobController->ToJSON($data);
 }
-
 
 if (isset($_GET['offer']) && str_contains($_SERVER['REQUEST_URI'], '/job')) {
     $id = $_GET['offer'];
@@ -278,8 +280,8 @@ if (isset($_GET['offer']) && str_contains($_SERVER['REQUEST_URI'], '/job')) {
 
 if (
     $_SERVER['REQUEST_METHOD'] == 'POST' &&
-    str_contains($_SERVER['REQUEST_URI'], '/add-job') &&
-    !empty($_POST['title']) and
+        str_contains($_SERVER['REQUEST_URI'], '/add-job') &&
+        !empty($_POST['title']) and
     !empty($_POST['content']) and
     !empty($_POST['id_planet']) and
     !empty($_POST['contract_type']) and
@@ -362,4 +364,3 @@ if ($_SERVER['REQUEST_URI'] == '/planet') {
     $data = $planetController->getAllPlanets();
     echo $planetController->ToJSON($data);
 }
-
