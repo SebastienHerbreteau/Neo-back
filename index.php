@@ -223,7 +223,6 @@ if (
     isset($_GET['id']) &&
     str_contains($_SERVER['REQUEST_URI'], '/delete-candidate')
 ) {
-    var_dump($id);
     $id = $_GET['id'];
     $CandidateController = new CandidateController();
     $data = $CandidateController->deleteCandidate($id);
