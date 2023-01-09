@@ -16,7 +16,7 @@ class AgencyController extends Controller
     public function getAgency($id)
     {
         $agency = new Agency();
-        $agency = $agency->getAgency($id);
+        $agency = $agency->get($id);
         return $agency;
     }
 
@@ -48,6 +48,39 @@ class AgencyController extends Controller
             $logo,
             $id_planet
         );
+        return $agency;
+    }
+
+    public function putAgency(
+        $id,
+        $name,
+        $email,
+        $pwd,
+        $ceo_name,
+        $tel,
+        $website,
+        $logo,
+        $id_planet
+    ) {
+        $agency = new Agency();
+        $agency = $agency->put(
+            $id,
+            $name,
+            $email,
+            $pwd,
+            $ceo_name,
+            $tel,
+            $website,
+            $logo,
+            $id_planet
+        );
+        return $agency;
+    }
+
+    public function deleteAgency($id)
+    {
+        $agency = new Agency();
+        $agency = $agency->delete($id);
         return $agency;
     }
 }

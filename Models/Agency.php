@@ -8,7 +8,7 @@ class Agency
      * Permet de récupérer UNE agence via son ID
      * @param int $id
      */
-    public static function getAgency(int $agency_id)
+    public static function get(int $agency_id)
     {
         $params = [
             'id' => $agency_id,
@@ -48,13 +48,13 @@ class Agency
      * Permet de supprimer une agence
      * @param int $id
      */
-    public static function deleteAgency(int $agency_id)
+    public static function delete(int $agency_id)
     {
         $params = [
             'id' => $agency_id,
         ];
 
-        Database::prepReq('DELETE FROM agency WHERE agency.id = :id', $params);
+        Database::prepReq('DELETE FROM agency WHERE id = :id', $params);
     }
 
     /**
@@ -92,7 +92,7 @@ class Agency
      * Permet de modifier TOUTES les informations d'une agence ciblée par son ID.
      * @param int $id cible l'agence a modifier
      */
-    public static function putAgency(
+    public static function put(
         $id,
         $name,
         $email,

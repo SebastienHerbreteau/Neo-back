@@ -50,6 +50,7 @@ if (isset($_GET['planet']))
 
 if (
 $_SERVER['REQUEST_METHOD'] == 'POST' &&
+str_contains($_SERVER['REQUEST_URI'], "/add-agency") &&
 !empty($_POST['name']) and
 !empty($_POST['email']) and
 !empty($_POST['pwd']) and
@@ -80,6 +81,52 @@ $_SERVER['REQUEST_METHOD'] == 'POST' &&
         $logo,
         $id_planet
     );
+}
+
+if (
+$_SERVER['REQUEST_METHOD'] == 'POST' &&
+str_contains($_SERVER['REQUEST_URI'], "/modify-agency") &&
+!empty($_POST['id']) and
+!empty($_POST['name']) and
+!empty($_POST['email']) and
+!empty($_POST['pwd']) and
+!empty($_POST['ceo_name']) and
+!empty($_POST['tel']) and
+!empty($_POST['website']) and
+!empty($_POST['logo']) and
+!empty($_POST['id_planet'])
+) 
+{
+    $id = $_POST['id'];
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $pwd = $_POST['pwd'];
+    $ceo_name = $_POST['ceo_name'];
+    $tel = $_POST['tel'];
+    $website = $_POST['website'];
+    $logo = $_POST['logo'];
+    $id_planet = $_POST['id_planet'];
+
+    $AgencyController = new AgencyController();
+    $data = $AgencyController->putAgency(
+        $id,
+        $name,
+        $email,
+        $pwd,
+        $ceo_name,
+        $tel,
+        $website,
+        $logo,
+        $id_planet
+    );
+
+if (isset($_GET['id']) && str_contains($_SERVER['REQUEST_URI'], "/delete-agency"))
+{
+    $id = $_GET['id'];
+    $AgencyController = new AgencyController();
+    $data = $AgencyController->deleteAgency($id);
+    echo $AgencyController->ToJSON($data);
+}
 }
 
 
