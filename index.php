@@ -135,12 +135,13 @@ if ($_SERVER['REQUEST_URI'] == '/candidate') {
 
 // return an Candidate by it's id
 if (isset($_GET['id']) && str_contains($_SERVER['REQUEST_URI'], '/candidate')) {
+    $id = $_GET['id'];
     $CandidateController = new CandidateController();
     $data = $CandidateController->getCandidate($id);
     echo $CandidateController->ToJSON($data);
 }
 
-// Return agencies by their home planet ID
+// Return candidate by offer ID
 if (
     isset($_GET['offer']) &&
     str_contains($_SERVER['REQUEST_URI'], '/candidate')
@@ -152,6 +153,7 @@ if (
     return;
 }
 
+// Add a new candidate
 if (
     $_SERVER['REQUEST_METHOD'] == 'POST' &&
     str_contains($_SERVER['REQUEST_URI'], '/add-candidate') &&

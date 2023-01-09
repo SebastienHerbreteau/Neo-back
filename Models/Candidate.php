@@ -120,6 +120,7 @@ class Candidate
             'SELECT * FROM candidate JOIN candidate_job_offer ON candidate_job_offer.id_candidate = candidate.id JOIN job_offer ON candidate_job_offer.id_job_offer = job_offer.id WHERE job_offer.id = :id',
             $params
         );
+        return Database::fetchData();
     }
     
 }
