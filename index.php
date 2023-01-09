@@ -4,6 +4,7 @@ namespace App;
 
 require 'vendor/autoload.php';
 
+use App\Controllers\CandidateController;
 use App\Controllers\Controller;
 use App\Controllers\AgencyController;
 use App\Models\Database;
@@ -141,8 +142,11 @@ if (isset($_GET['id']) && str_contains($_SERVER['REQUEST_URI'], '/candidate')) {
 }
 
 // Return agencies by their home planet ID
-if (isset($_GET['planet'])) {
-    $id = $_GET['planet'];
+if (
+    isset($_GET['offer']) &&
+    str_contains($_SERVER['REQUEST_URI'], '/candidate')
+) {
+    $id = $_GET['offer'];
     $CandidateController = new CandidateController();
     $data = $CandidateController->getCandidateByJobOffer($id);
     echo $CandidateController->ToJSON($data);
@@ -155,18 +159,18 @@ if (
         !empty($_POST['name']) and
     !empty($_POST['email']) and
     !empty($_POST['pwd']) and
+    !empty($_POST['id_planet']) and
     !empty($_POST['tel']) and
     !empty($_POST['avatar']) and
-    !empty($_POST['cv']) and
-    !empty($_POST['id_planet'])
+    !empty($_POST['cv'])
 ) {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $pwd = $_POST['pwd'];
+    $id_planet = $_POST['id_planet'];
     $tel = $_POST['tel'];
     $avatar = $_POST['avatar'];
     $cv = $_POST['cv'];
-    $id_planet = $_POST['id_planet'];
 
     $CandidateController = new CandidateController();
     $data = $CandidateController->postCandidate(
@@ -213,6 +217,7 @@ if (
         $id_planet
     );
 }
+
 if (
     isset($_GET['id']) &&
     str_contains($_SERVER['REQUEST_URI'], '/delete-candidate')
@@ -222,4 +227,102 @@ if (
     $CandidateController = new CandidateController();
     $data = $CandidateController->deleteCandidate($id);
     echo $CandidateController->ToJSON($data);
+}
+
+//--------------------------------------------------------- ROUTEUR JOB OFFER------------------------------------------------
+
+if ($_SERVER['REQUEST_URI'] == '/job') {
+    $jobController = new JobController();
+    $data = $jobController->getAllJobs();
+    echo $jobController->ToJSON($data);
+}
+
+// return an job by it's id
+if (isset($_GET['id']) && str_contains($_SERVER['REQUEST_URI'], '/job')) {
+    $id = $_GET['id'];
+    $jobController = new jobController();
+    $data = $jobController->getJobOffer($id);
+    echo $jobController->ToJSON($data);
+}
+
+// Return agencies by their home planet ID
+if (isset($_GET['offer']) && str_contains($_SERVER['REQUEST_URI'], '/job')) {
+    $id = $_GET['offer'];
+    $jobController = new jobController();
+    $data = $jobController->getjobByCandidate($id);
+    echo $jobController->ToJSON($data);
+    return;
+}
+
+if (
+    $_SERVER['REQUEST_METHOD'] == 'POST' &&
+        str_contains($_SERVER['REQUEST_URI'], '/add-job') &&
+        !empty($_POST['title']) and
+    !empty($_POST['content']) and
+    !empty($_POST['id_planet']) and
+    !empty($_POST['contract_type']) and
+    !empty($_POST['salary']) and
+    !empty($_POST['id_agency'])
+) {
+    $title = $_POST['title'];
+    $content = $_POST['content'];
+    $pwd = $_POST['pwd'];
+    $id_planet = $_POST['id_planet'];
+    $contract_type = $_POST['contract_type'];
+    $salary = $_POST['salary'];
+    $id_agency = $_POST['id_agency'];
+
+    $jobController = new jobController();
+    $data = $jobController->createJobOffer(
+        $title,
+        $content,
+        $pwd,
+        $id_planet,
+        $contract_type,
+        $salary,
+        $id_agency
+    );
+}
+
+if (
+    $_SERVER['REQUEST_METHOD'] == 'POST' &&
+        str_contains($_SERVER['REQUEST_URI'], '/modify-job') &&
+        !empty($_POST['id']) and
+    !empty($_POST['title']) and
+    !empty($_POST['content']) and
+    !empty($_POST['id_planet']) and
+    !empty($_POST['contract_type']) and
+    !empty($_POST['salary']) and
+    !empty($_POST['id_agency'])
+) {
+    $id = $_POST['id'];
+    $title = $_POST['title'];
+    $content = $_POST['content'];
+    $pwd = $_POST['pwd'];
+    $id_planet = $_POST['id_planet'];
+    $contract_type = $_POST['contract_type'];
+    $salary = $_POST['salary'];
+    $id_agency = $_POST['id_agency'];
+
+    $jobController = new jobController();
+    $data = $jobController->modifyJobOffer(
+        $id,
+        $title,
+        $content,
+        $pwd,
+        $id_planet,
+        $contract_type,
+        $salary,
+        $id_agency
+    );
+}
+if (
+    isset($_GET['id']) &&
+    str_contains($_SERVER['REQUEST_URI'], '/delete-job')
+) {
+    var_dump($id);
+    $id = $_GET['id'];
+    $jobController = new jobController();
+    $data = $jobController->deleteJobOffer($id);
+    echo $jobController->ToJSON($data);
 }
