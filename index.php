@@ -130,9 +130,15 @@ if (
 
 //--------------------------------------------------------- ROUTEUR CANDIDATE------------------------------------------------
 
-if ($_SERVER['REQUEST_URI'] == '/candidate') {
+if (
+    isset($_GET['query_limit']) &&
+    isset($_GET['query_offset']) &&
+    str_contains($_SERVER['REQUEST_URI'], '/candidate?')
+) {
+    $query_offset = intval($_GET['query_offset']);
+    $query_limit = intval($_GET['query_limit']);
     $CandidateController = new CandidateController();
-    $data = $CandidateController->getAllCandidates();
+    $data = $CandidateController->getAllCandidates($query_limit, $query_offset);
     echo $CandidateController->ToJSON($data);
 }
 
