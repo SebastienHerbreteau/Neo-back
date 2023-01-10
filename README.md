@@ -9,18 +9,13 @@
 Upload all the repository files to your host
 ##### database
 Install the database present at the root of the repo and add a .env file, at the root of the project,  containing the following informations:
-`
-DBHOST="host_address"
-`
-`
-DBUSER="username"
-`
-`
-DBPASSWORD="password"
-`
-`
-DBNAME="database_name"
-`
+`DBHOST="host_address"`
+</br>
+`DBUSER="username"`
+</br>
+`DBPASSWORD="password"`
+</br>
+`DBNAME="database_name"`
 
 ---
 ### documentation
