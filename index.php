@@ -365,6 +365,7 @@ if (isset($_GET['id']) && str_contains($_SERVER['REQUEST_URI'], '/planet')) {
 }
 
 if ($_SERVER['REQUEST_URI'] == '/planet') {
+    $id = $_GET['id'];
     $planetController = new PlanetController();
     $data = $planetController->getAllPlanets();
     echo $planetController->ToJSON($data);
