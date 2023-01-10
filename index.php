@@ -350,12 +350,14 @@ if (
 //--------------------------------------------------------- ROUTEUR PLANET ------------------------------------------------
 // Return a planet by his ID
 if (isset($_GET['id']) && str_contains($_SERVER['REQUEST_URI'], '/planet')) {
+    $id = $_GET['id'];
     $planetController = new PlanetController();
     $data = $planetController->getPlanet($id);
     echo $planetController->ToJSON($data);
 }
 
 if ($_SERVER['REQUEST_URI'] == '/planet') {
+    $id = $_GET['id'];
     $planetController = new PlanetController();
     $data = $planetController->getAllPlanets();
     echo $planetController->ToJSON($data);
