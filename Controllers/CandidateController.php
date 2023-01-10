@@ -6,10 +6,10 @@ use App\Controllers\Controller;
 
 class CandidateController extends Controller
 {
-  public function getAllCandidates()
+  public function getAllCandidates($query_limit, $query_offset)
   {
     $candidates = new Candidate();
-    $candidates = $candidates->getAllCandidates();
+    $candidates = $candidates->getAllCandidates($query_limit, $query_offset);
     return $candidates;
   }
 

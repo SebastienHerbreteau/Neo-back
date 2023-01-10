@@ -57,6 +57,7 @@ class Database
         return self::$request->rowCount();
     }
 
+    
     /**
      * Récupère les données
      * @return bool|array
@@ -65,4 +66,7 @@ class Database
     {
         return self::$request->fetchAll(PDO::FETCH_ASSOC);
     }
+
+
+
 }

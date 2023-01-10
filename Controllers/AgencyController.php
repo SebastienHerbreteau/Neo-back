@@ -6,10 +6,10 @@ use App\Controllers\Controller;
 
 class AgencyController extends Controller
 {
-    public function getAllAgency()
+    public function getAllAgency($query_limit, $query_offset)
     {
         $agencies = new Agency();
-        $agencies = $agencies->getAllAgency();
+        $agencies = $agencies->getAllAgency($query_limit, $query_offset);
         return $agencies;
     }
 

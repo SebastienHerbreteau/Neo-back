@@ -6,9 +6,14 @@ use App\Models\Database;
 
 class Job
 {
-    public function getAllJobOffer()
+
+    /**
+     * Return all the job offers
+     * @param int $id
+     */
+    public static function getAllJobOffer($query_limit, $query_offset)
     {
-        Database::prepReq('SELECT * FROM job_offer');
+        Database::prepReq("SELECT * FROM job_offer LIMIT $query_limit OFFSET $query_offset");
         return Database::fetchData();
     }
 

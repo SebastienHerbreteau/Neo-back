@@ -6,9 +6,10 @@ use App\Models\Database;
 
 class Candidate
 {
-    public function getAllCandidates()
+    public function getAllCandidates($query_limit, $query_offset)
     {
-        Database::prepReq('SELECT * FROM candidate');
+
+        Database::prepReq("SELECT * FROM candidate LIMIT $query_limit OFFSET $query_offset",);
         return Database::fetchData();
     }
 

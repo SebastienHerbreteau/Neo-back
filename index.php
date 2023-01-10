@@ -22,9 +22,15 @@ Database::connect();
 
 //--------------------------------------------------------- ROUTEUR AGENCY------------------------------------------------
 // return all of the agencies
-if ($_SERVER['REQUEST_URI'] == '/agency') {
+if (
+    isset($_GET['query_limit']) &&
+    isset($_GET['query_offset']) &&
+    str_contains($_SERVER['REQUEST_URI'], '/agency?')
+) {
+    $query_offset = $_GET['query_offset'];
+    $query_limit = $_GET['query_limit'];
     $AgencyController = new AgencyController();
-    $data = $AgencyController->getAllAgency();
+    $data = $AgencyController->getAllAgency($query_limit, $query_offset);
     echo $AgencyController->ToJSON($data);
 }
 
@@ -130,9 +136,15 @@ if (
 
 //--------------------------------------------------------- ROUTEUR CANDIDATE------------------------------------------------
 
-if ($_SERVER['REQUEST_URI'] == '/candidate') {
+if (
+    isset($_GET['query_limit']) &&
+    isset($_GET['query_offset']) &&
+    str_contains($_SERVER['REQUEST_URI'], '/candidate?')
+) {
+    $query_offset = $_GET['query_offset'];
+    $query_limit = $_GET['query_limit'];
     $CandidateController = new CandidateController();
-    $data = $CandidateController->getAllCandidates();
+    $data = $CandidateController->getAllCandidates($query_limit, $query_offset);
     echo $CandidateController->ToJSON($data);
 }
 
@@ -237,9 +249,15 @@ if (
 
 //--------------------------------------------------------- ROUTEUR JOB OFFER------------------------------------------------
 
-if ($_SERVER['REQUEST_URI'] == '/job') {
+if (
+    isset($_GET['query_limit']) &&
+    isset($_GET['query_offset']) &&
+    str_contains($_SERVER['REQUEST_URI'], '/job?')
+) {
+    $query_offset = $_GET['query_offset'];
+    $query_limit = $_GET['query_limit'];
     $jobController = new JobController();
-    $data = $jobController->getAllJobs();
+    $data = $jobController->getAllJobs($query_limit, $query_offset);
     echo $jobController->ToJSON($data);
 }
 

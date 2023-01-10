@@ -38,9 +38,9 @@ class Agency
      * Permet de récupérer toutes les agences
      * @param int $id
      */
-    public static function getAllAgency()
+    public static function getAllAgency($query_limit, $query_offset)
     {
-        Database::prepReq('SELECT * FROM agency');
+        Database::prepReq("SELECT * FROM agency LIMIT $query_limit OFFSET $query_offset");
         return Database::fetchData();
     }
 
