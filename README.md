@@ -7,7 +7,7 @@
 ### installation
 ##### host the project
 Upload all the repository files (back and front) to your host</br>
-Front (https://github.com/MoustaphaCamara/neo-front)
+Front => (https://github.com/MoustaphaCamara/neo-front)
 
 <img src="/src/img/image1.png">
 <img src="/src/img/image2.png">
