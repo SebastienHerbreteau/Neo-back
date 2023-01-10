@@ -37,7 +37,10 @@ if (isset($_GET['id']) && str_contains($_SERVER['REQUEST_URI'], '/agency?')) {
 }
 
 // Return agencies by their home planet ID
-if (isset($_GET['planet']) && str_contains($_SERVER['REQUEST_URI'], '/agency?')) {
+if (
+    isset($_GET['planet']) &&
+    str_contains($_SERVER['REQUEST_URI'], '/agency?')
+) {
     $id = $_GET['planet'];
     $AgencyController = new AgencyController();
     $data = $AgencyController->getAgencyByPlanetId($id);
@@ -134,7 +137,10 @@ if ($_SERVER['REQUEST_URI'] == '/candidate') {
 }
 
 // return an Candidate by it's id
-if (isset($_GET['id']) && str_contains($_SERVER['REQUEST_URI'], '/candidate?')) {
+if (
+    isset($_GET['id']) &&
+    str_contains($_SERVER['REQUEST_URI'], '/candidate?')
+) {
     $id = $_GET['id'];
     $CandidateController = new CandidateController();
     $data = $CandidateController->getCandidate($id);
@@ -251,7 +257,10 @@ if (isset($_GET['planet']) && str_contains($_SERVER['REQUEST_URI'], '/job?')) {
     echo $jobController->ToJSON($data);
 }
 
-if (isset($_GET['contract']) && str_contains($_SERVER['REQUEST_URI'], '/job?')) {
+if (
+    isset($_GET['contract']) &&
+    str_contains($_SERVER['REQUEST_URI'], '/job?')
+) {
     $contract = $_GET['contract'];
     $jobController = new jobController();
     $data = $jobController->getJobByContract($contract);
@@ -340,7 +349,6 @@ if (
     isset($_GET['id']) &&
     str_contains($_SERVER['REQUEST_URI'], '/delete-job')
 ) {
-    var_dump($id);
     $id = $_GET['id'];
     $jobController = new jobController();
     $data = $jobController->deleteJobOffer($id);
@@ -350,6 +358,7 @@ if (
 //--------------------------------------------------------- ROUTEUR PLANET ------------------------------------------------
 // Return a planet by his ID
 if (isset($_GET['id']) && str_contains($_SERVER['REQUEST_URI'], '/planet')) {
+    $id = $_GET['id'];
     $planetController = new PlanetController();
     $data = $planetController->getPlanet($id);
     echo $planetController->ToJSON($data);
