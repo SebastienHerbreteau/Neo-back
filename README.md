@@ -6,8 +6,8 @@
 
 ### installation
 ##### host the project
-Upload all the repository files (back and front)to your host
-front (https://github.com/MoustaphaCamara/neo-front)
+Upload all the repository files (back and front) to your host</br>
+Front (https://github.com/MoustaphaCamara/neo-front)
 ##### database
 Install the database present at the root of the repo and add a .env file, at the root of the project,  containing the following informations:
 `DBHOST="host_address"`
