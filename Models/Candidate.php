@@ -8,13 +8,8 @@ class Candidate
 {
     public function getAllCandidates($query_limit, $query_offset)
     {
-        var_dump($query_offset);
-        $params = [
-            'query_limit' => $query_limit,
-            'query_offset' => $query_offset
-        ];
 
-        Database::prepReq('SELECT * FROM candidate LIMIT :query_limit OFFSET :query_offset', $params);
+        Database::prepReq("SELECT * FROM candidate LIMIT $query_limit OFFSET $query_offset",);
         return Database::fetchData();
     }
 

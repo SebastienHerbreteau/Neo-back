@@ -13,10 +13,10 @@ class JobController extends Controller
         return $job;
     }
 
-    public function getAllJobs()
+    public function getAllJobs($query_limit, $query_offset)
     {
         $job = new Job();
-        $job = $job->getAllJobOffer();
+        $job = $job->getAllJobOffer($query_limit, $query_offset);
         return $job;
     }
 
